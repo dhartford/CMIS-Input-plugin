@@ -52,8 +52,14 @@ public class CmisSessionFactory {
         parameter.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
         parameter.put(SessionParameter.USER, login);
         parameter.put(SessionParameter.PASSWORD, password);
+        
+        // DRH - change to use Apache HTTP Client instead of DefaultHttpInvoker. Add httpclient and httpcore library (and define in plugin.xml).
+        parameter.put(SessionParameter.HTTP_INVOKER_CLASS, "org.apache.chemistry.opencmis.client.bindings.spi.http.ApacheClientHttpInvoker");
+        // DRH - change Authentication provider to allow self signed certs  
+        parameter.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS, "it.francescocorti.kettle.cmisinput.AuthenticationSelfSignedSSLProvider");
+        
 
-        // Create session.
+        // Create session
         List<org.apache.chemistry.opencmis.client.api.Repository> repositories = factory.getRepositories(parameter);
         return repositories.get(0).createSession();
 	}
