@@ -12,6 +12,11 @@ For more informations, please refer to
 http://fcorti.com/pdi-cmis-input/
 
 ================
+DRH general what-to-expect
+ - need to write your own cmis query (no support built-in).  
+ - a simple 'select cmis:name from cmis:document' (over HTTPS) may only run at ~40 records/sec depending on your setup.
+ - CMIS query syntax itself does *not* have a limit/top option (TODO need to add pagination support via OperationContext or similar for that kind of behavior).
+
 2015-10-30 DRH TLS/SSL update -
  - added custom AuthenticationProvider that allows self-signed SSL certs (todo, should make a checkbox option to configure)
  - Research why GET calls were using HTTPS, but POST were only using HTTP...need to modify Alfresco server when using reverse proxy setups (apache, nginx, F5, etc);  For alfresco 4.2.*, 5.0.*, see http://docs.alfresco.com/5.0/tasks/configure-ssl-prod.html   (opencmis.server.* properties for alfresco-global.properties). Note that older versions have various other means to change the cmis setup.  Verify by going to alfresco/api/-default-/cmis/versions/1.0/atom and looking at the downloaded atompub xml document for app:collection and the url defined there.
