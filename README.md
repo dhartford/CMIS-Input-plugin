@@ -14,6 +14,7 @@ http://fcorti.com/pdi-cmis-input/
 ================
 DRH general what-to-expect
  - need to write your own cmis query (no support built-in).  
+ - TIP: immediately map to another step, like text file output, and keep using that's step 'Get Fields' feature to verify your query and fields coming onto the PDI/ETL stream. 
  - a simple 'select cmis:name from cmis:document' (over HTTPS) may only run at ~40 records/sec depending on your setup.
  - CMIS query syntax itself does *not* have a limit/top option (TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior).
 
