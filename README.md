@@ -11,3 +11,8 @@ For more informations, please refer to
 
 http://fcorti.com/pdi-cmis-input/
 
+================
+2015-10-30 DRH TLS/SSL update -
+ - added custom AuthenticationProvider that allows self-signed SSL certs.
+ - Research why GET calls were using HTTPS, but POST were only using HTTP...need to modify Alfresco server when using reverse proxy setups (apache, nginx, F5, etc);  For alfresco 4.2.*, 5.0.*, see http://docs.alfresco.com/5.0/tasks/configure-ssl-prod.html   (opencmis.server.* properties for alfresco-global.properties). Note that older versions have various other means to change the cmis setup.  Verify by going to alfresco/api/-default-/cmis/versions/1.0/atom and looking at the downloaded atompub xml document for app:collection and the url defined there.
+ - DefaultHttpInvoker verified, have not verified ApacheClientHttpInvoker yet.
