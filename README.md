@@ -15,7 +15,7 @@ http://fcorti.com/pdi-cmis-input/
 DRH general what-to-expect
  - need to write your own cmis query (no support built-in).  
  - a simple 'select cmis:name from cmis:document' (over HTTPS) may only run at ~40 records/sec depending on your setup.
- - CMIS query syntax itself does *not* have a limit/top option (TODO need to add pagination support via OperationContext or similar for that kind of behavior).
+ - CMIS query syntax itself does *not* have a limit/top option (TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior).
 
 2015-10-30 DRH TLS/SSL update -
  - added custom AuthenticationProvider that allows self-signed SSL certs (todo, should make a checkbox option to configure)
