@@ -16,10 +16,12 @@ DRH general what-to-expect
  - need to write your own cmis query (no support built-in).  
  - TIP: immediately map to another step, like text file output, and keep using that's step 'Get Fields' feature to verify your query and fields coming onto the PDI/ETL stream. 
  - a simple 'select cmis:name from cmis:document' (over HTTPS) may only run at ~40 records/sec depending on your setup.
- - CMIS query syntax itself does *not* have a limit/top option (TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior).
+ - CMIS query syntax itself does *not* have a limit/top option
+     - TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior.
  - Only 1000 items (and lucene or alfresco 4.x system)?  Need to configure alfresco-global.properties for system.acl.maxPermissionChecks=1000000 (or whatever big number)...need to figure out how to get openCMIS to work correctly (paginate) for each request without exceeding that max permsision number, which should only be 1000, not that high...
 
 2015-10-30 DRH TLS/SSL update -
  - added custom AuthenticationProvider that allows self-signed SSL certs (todo, should make a checkbox option to configure)
  - Research why GET calls were using HTTPS, but POST were only using HTTP...need to modify Alfresco server when using reverse proxy setups (apache, nginx, F5, etc);  For alfresco 4.2.*, 5.0.*, see http://docs.alfresco.com/5.0/tasks/configure-ssl-prod.html   (opencmis.server.* properties for alfresco-global.properties). Note that older versions have various other means to change the cmis setup.  Verify by going to alfresco/api/-default-/cmis/versions/1.0/atom and looking at the downloaded atompub xml document for app:collection and the url defined there.
+     - TODO should add better check process to inform end user of difference between requested URL and URL within the atompub return document.
  - DefaultHttpInvoker verified, have not verified ApacheClientHttpInvoker yet.
