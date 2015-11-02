@@ -17,7 +17,7 @@ DRH general what-to-expect
  - TIP: immediately map to another step, like text file output, and keep using that's step 'Get Fields' feature to verify your query and fields coming onto the PDI/ETL stream. 
  - a simple 'select cmis:name from cmis:document' (over HTTPS) may only run at ~40 records/sec depending on your setup.
  - CMIS query syntax itself does *not* have a limit/top option
-     - TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior.
+     - TODO need to add pagination / maxRecords support via OperationContext or similar for that kind of behavior.  This should be investigated for both the 'preview' option from PDI, as well as when you want to stop the transformation half-way through and not have to wait for the CMIS query to keep running.
  - Only 1000 items (and lucene or alfresco 4.x system)?  Need to configure alfresco-global.properties for system.acl.maxPermissionChecks=1000000 (or whatever big number)...need to figure out how to get openCMIS to work correctly (paginate) for each request without exceeding that max permsision number, which should only be 1000, not that high...
 
 2015-10-30 DRH TLS/SSL update -
